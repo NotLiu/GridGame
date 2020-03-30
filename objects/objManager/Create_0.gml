@@ -4,6 +4,9 @@
 player_score = 0;
 enemy_score = 0;
 
+chosen_pos = 0;
+enemy_chosen_pos = 0;
+
 global.state_deal = 0;
 global.state_choose = 1;
 global.state_compare = 2;

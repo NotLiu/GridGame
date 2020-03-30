@@ -6,7 +6,7 @@ switch(global.state){
 		var cards_enemy_hand = ds_list_size(global.enemy_hand);
 		var cards_hand = ds_list_size(global.hand);
 		
-		if(wait_time > 15){
+		if(wait_time > 20){
 			if(cards_enemy_hand <3){
 				var dealt_card = global.deck[| ds_list_size(global.deck)-1];
 				ds_list_delete(global.deck,	ds_list_size(global.deck)-1);
@@ -57,6 +57,18 @@ switch(global.state){
 			wait_time = 0;
 		}
 		
+		for(i=0; i<ds_list_size(global.hand); i++){
+			if(global.hand[| i] == global.selected){
+				chosen_pos = i;
+			}
+		}
+		
+		for(i=0; i<ds_list_size(global.enemy_hand); i++){
+			if(global.enemy_hand[| i] == global.enemy_selected){
+				enemy_chosen_pos = i;
+			}
+		}
+		
 		if(chosen == true && enemy_chosen == true){
 			global.state = global.state_compare;	
 			wait_time = 0;
@@ -66,8 +78,8 @@ switch(global.state){
 		break;
 	
 	case global.state_compare:
-		
-		if(wait_time > 30){
+		if(wait_time > 50 && global.enemy_selected.faceup == false){
+			global.enemy_selected.faceup = true;
 			winner = RockPaperScissors();
 			if(winner == 1){ //player wins
 				player_score += 1;
@@ -75,10 +87,62 @@ switch(global.state){
 			else if(winner == 2){ //enemy wins
 				enemy_score += 1;	
 			}
+		}
+		if(wait_time > 100){
 			global.state = global.state_cleanup;
 			wait_time = 0;
 		}
 		wait_time++;
+		break;
+		
+	case global.state_cleanup:
+		
+		if(wait_time > 20){
+			if(ds_list_size(global.enemy_hand) == 3){
+				global.enemy_selected.target_x = room_width -x*1.5;
+				global.enemy_selected.target_y = y - 2*ds_list_size(global.discard);
+				global.enemy_selected.depth = -ds_list_size(global.discard);
+				ds_list_add(global.discard, global.enemy_selected);
+				ds_list_delete(global.enemy_hand, enemy_chosen_pos);
+			}
+			else if(ds_list_size(global.hand) == 3){
+				global.selected.target_x = room_width -x*1.5;
+				global.selected.target_y = y - 2*ds_list_size(global.discard);
+				global.selected.depth = -ds_list_size(global.discard);
+				ds_list_add(global.discard, global.selected);
+				ds_list_delete(global.hand, chosen_pos);
+			}
+			else{			
+				if(ds_list_size(global.enemy_hand) > 0){
+					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].faceup = true;
+					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].target_x = room_width - x*1.5;
+					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].target_y = y - 2*ds_list_size(global.discard);
+					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].depth = -ds_list_size(global.discard);
+					ds_list_add(global.discard, global.enemy_hand[| ds_list_size(global.enemy_hand)-1]);
+					ds_list_delete(global.enemy_hand, ds_list_size(global.enemy_hand)-1);
+				}
+				else if(ds_list_size(global.hand) > 0){
+					global.hand[| ds_list_size(global.hand)-1].faceup = true;
+					global.hand[| ds_list_size(global.hand)-1].target_x = room_width - x*1.5;
+					global.hand[| ds_list_size(global.hand)-1].target_y = y - 2*ds_list_size(global.discard);
+					global.hand[| ds_list_size(global.hand)-1].depth = -ds_list_size(global.discard);
+					ds_list_add(global.discard, global.hand[| ds_list_size(global.hand)-1]);
+					ds_list_delete(global.hand, ds_list_size(global.hand)-1);
+				}
+				else{
+					global.state = global.state_reshuffle;
+					wait_time = 0;
+				}
+			}
+			wait_time = 0;
+		}
+		wait_time++;
+		break;
+	case global.state_reshuffle:
+	
+	
+	wait_time++;
+	break;
 
 }
 
