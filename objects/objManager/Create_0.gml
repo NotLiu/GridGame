@@ -17,6 +17,7 @@ global.state = global.state_deal;
 
 global.hand = ds_list_create();
 global.deck = ds_list_create();
+global.deck_reverse = ds_list_create();
 global.discard = ds_list_create();
 
 global.enemy_hand = ds_list_create();
