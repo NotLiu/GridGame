@@ -47,6 +47,14 @@
             }
         },
         {
+            "Key": "127cc8fa-7c27-44d3-9acd-a68fee975e89",
+            "Value": {
+                "id": "bcb35dc7-009a-4eb1-8995-69fd6b40fdb1",
+                "resourcePath": "sounds\\snd_card\\snd_card.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "213185c3-1d9c-4d7c-8137-b6796b82ae6e",
             "Value": {
                 "id": "01d410de-4c8b-44d7-b705-f00a632c00d5",
@@ -239,6 +247,14 @@
             }
         },
         {
+            "Key": "c72ba199-5fc3-4767-bfb4-5c421bf7924e",
+            "Value": {
+                "id": "b0e5d3c9-4236-448d-af4f-a50824b201b4",
+                "resourcePath": "sounds\\snd_lose\\snd_lose.yy",
+                "resourceType": "GMSound"
+            }
+        },
+        {
             "Key": "c7666675-4477-46ee-ac6d-609bdb2abb5c",
             "Value": {
                 "id": "cca0ee95-0cd9-4ecd-ab37-f3b348cdbb91",
@@ -300,6 +316,14 @@
                 "id": "545c1ce1-9a6a-4f06-b99f-cff47d0eca65",
                 "resourcePath": "scripts\\RockPaperScissors\\RockPaperScissors.yy",
                 "resourceType": "GMScript"
+            }
+        },
+        {
+            "Key": "fdaaf456-26f9-41b7-a36e-4f6ef15443d8",
+            "Value": {
+                "id": "e61e2e67-9a00-49a1-949c-402377f2ca15",
+                "resourcePath": "sounds\\snd_win\\snd_win.yy",
+                "resourceType": "GMSound"
             }
         }
     ],

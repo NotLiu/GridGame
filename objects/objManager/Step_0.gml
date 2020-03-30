@@ -8,6 +8,8 @@ switch(global.state){
 		
 		if(wait_time > 15){
 			if(cards_enemy_hand <3){
+				audio_play_sound(snd_card, 10, false);
+				
 				var dealt_card = global.deck[| ds_list_size(global.deck)-1];
 				ds_list_delete(global.deck,	ds_list_size(global.deck)-1);
 				ds_list_add(global.enemy_hand, dealt_card);
@@ -19,6 +21,8 @@ switch(global.state){
 			}
 			else{
 				if(cards_hand < 3){
+					audio_play_sound(snd_card, 10, false);
+					
 					dealt_card = global.deck[| ds_list_size(global.deck)-1];
 					ds_list_delete(global.deck, ds_list_size(global.deck)-1);
 					ds_list_add(global.hand, dealt_card);
@@ -42,14 +46,18 @@ switch(global.state){
 	case global.state_choose:
 		if(mouse_check_button_pressed(mb_left)){
 			if(global.selected != noone){
-					global.selected.target_x = room_width/3 + 100;
-					global.selected.target_y = room_height/2;
-					global.selected.in_hand = false;
-					chosen = true;
+				audio_play_sound(snd_card, 10, false);
+				
+				global.selected.target_x = room_width/3 + 100;
+				global.selected.target_y = room_height/2;
+				global.selected.in_hand = false;
+				chosen = true;
 			}
 		}
 		
 		if(wait_time > 30 && enemy_chosen == false){
+			audio_play_sound(snd_card, 10, false);
+			
 			enemy_chosen = true;
 			global.enemy_selected = global.enemy_hand[| irandom_range(0,2)];
 			global.enemy_selected.target_x = room_width/3 +100;
@@ -58,7 +66,7 @@ switch(global.state){
 		}
 		
 		for(i=0; i<ds_list_size(global.hand); i++){
-			if(global.hand[| i] == global.selected){
+			if(global.hand[| i] == global.selected){	
 				chosen_pos = i;
 			}
 		}
@@ -82,9 +90,11 @@ switch(global.state){
 			global.enemy_selected.faceup = true;
 			winner = RockPaperScissors();
 			if(winner == 1){ //player wins
+				audio_play_sound(snd_win, 10, false);
 				player_score += 1;
 			}
 			else if(winner == 2){ //enemy wins
+				audio_play_sound(snd_lose, 10, false);
 				enemy_score += 1;	
 			}
 		}
@@ -99,6 +109,8 @@ switch(global.state){
 		
 		if(wait_time > 15){
 			if(ds_list_size(global.enemy_hand) == 3){
+				audio_play_sound(snd_card, 10, false);
+				
 				global.enemy_selected.target_x = room_width -x*1.5;
 				global.enemy_selected.target_y = y - 2*ds_list_size(global.discard);
 				global.enemy_selected.depth = -ds_list_size(global.discard);
@@ -109,6 +121,8 @@ switch(global.state){
 				enemy_chosen_pos = 0;
 			}
 			else if(ds_list_size(global.hand) == 3){
+				audio_play_sound(snd_card, 10, false);
+				
 				global.selected.target_x = room_width -x*1.5;
 				global.selected.target_y = y - 2*ds_list_size(global.discard);
 				global.selected.depth = -ds_list_size(global.discard);
@@ -120,6 +134,8 @@ switch(global.state){
 			}
 			else{			
 				if(ds_list_size(global.enemy_hand) > 0){
+					audio_play_sound(snd_card, 10, false);
+					
 					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].faceup = true;
 					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].target_x = room_width - x*1.5;
 					global.enemy_hand[| ds_list_size(global.enemy_hand)-1].target_y = y - 2*ds_list_size(global.discard);
@@ -128,6 +144,8 @@ switch(global.state){
 					ds_list_delete(global.enemy_hand, ds_list_size(global.enemy_hand)-1);
 				}
 				else if(ds_list_size(global.hand) > 0){
+					audio_play_sound(snd_card, 10, false);
+					
 					global.hand[| ds_list_size(global.hand)-1].faceup = true;
 					global.hand[| ds_list_size(global.hand)-1].target_x = room_width - x*1.5;
 					global.hand[| ds_list_size(global.hand)-1].target_y = y - 2*ds_list_size(global.discard);
@@ -153,6 +171,8 @@ switch(global.state){
 	case global.state_reshuffle:
 		if(wait_time > 5){
 			if(ds_list_size(global.deck_reverse) != global.numcards && ds_list_size(global.discard)!=0){				
+				audio_play_sound(snd_card, 10, false);
+				
 				var card = global.discard[| ds_list_size(global.discard)-1];
 				card.faceup = false;
 				card.target_x = x;
@@ -169,6 +189,8 @@ switch(global.state){
 					ds_list_shuffle(global.deck_reverse);
 				}
 				for(i = ds_list_size(global.deck_reverse)-1; i>0; i--){
+					audio_play_sound(snd_card, 10, false);
+					
 					var card = global.deck_reverse[| i];
 					card.target_y = y - 2*ds_list_size(global.deck);
 					card.depth = -ds_list_size(global.deck);
