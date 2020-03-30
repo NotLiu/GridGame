@@ -66,15 +66,15 @@ switch(global.state){
 		break;
 	
 	case global.state_compare:
-		winner = RockPaperScissors();
-		if(winner == 1){ //player wins
-			player_score += 1;
-		}
-		else if(winner == 2){ //enemy wins
-			enemy_score += 1;	
-		}
 		
 		if(wait_time > 30){
+			winner = RockPaperScissors();
+			if(winner == 1){ //player wins
+				player_score += 1;
+			}
+			else if(winner == 2){ //enemy wins
+				enemy_score += 1;	
+			}
 			global.state = global.state_cleanup;
 			wait_time = 0;
 		}
