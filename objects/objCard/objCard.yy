@@ -5,16 +5,6 @@
     "name": "objCard",
     "eventList": [
         {
-            "id": "08e17986-ddd1-44cf-bacc-330cc3a01d59",
-            "modelName": "GMEvent",
-            "mvc": "1.0",
-            "IsDnD": false,
-            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
-            "enumb": 0,
-            "eventtype": 0,
-            "m_owner": "331113de-2366-4003-ba45-9fec9140f8b7"
-        },
-        {
             "id": "98af4c57-ba35-4431-93c1-ba7f04c06394",
             "modelName": "GMEvent",
             "mvc": "1.0",
@@ -22,6 +12,16 @@
             "collisionObjectId": "00000000-0000-0000-0000-000000000000",
             "enumb": 0,
             "eventtype": 8,
+            "m_owner": "331113de-2366-4003-ba45-9fec9140f8b7"
+        },
+        {
+            "id": "a4db530a-12c1-4bce-9bb7-16b4c3222a6d",
+            "modelName": "GMEvent",
+            "mvc": "1.0",
+            "IsDnD": false,
+            "collisionObjectId": "00000000-0000-0000-0000-000000000000",
+            "enumb": 0,
+            "eventtype": 3,
             "m_owner": "331113de-2366-4003-ba45-9fec9140f8b7"
         }
     ],

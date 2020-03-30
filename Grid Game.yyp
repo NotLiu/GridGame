@@ -111,6 +111,14 @@
             }
         },
         {
+            "Key": "583e2642-6dd5-4a42-867a-d228dd78f412",
+            "Value": {
+                "id": "e3fb52d6-44fe-4607-9a89-24005717f455",
+                "resourcePath": "fonts\\font0\\font0.yy",
+                "resourceType": "GMFont"
+            }
+        },
+        {
             "Key": "59d2dffd-2027-44c8-adfa-c78d360de15c",
             "Value": {
                 "id": "1a8e83c9-ec0c-422c-a91a-e581896a40ec",
@@ -285,10 +293,18 @@
                 "resourcePath": "options\\mac\\options_mac.yy",
                 "resourceType": "GMMacOptions"
             }
+        },
+        {
+            "Key": "f9c95053-d963-4bdc-aa63-82a5b890f086",
+            "Value": {
+                "id": "545c1ce1-9a6a-4f06-b99f-cff47d0eca65",
+                "resourcePath": "scripts\\RockPaperScissors\\RockPaperScissors.yy",
+                "resourceType": "GMScript"
+            }
         }
     ],
     "script_order": [
-        
+        "f9c95053-d963-4bdc-aa63-82a5b890f086"
     ],
     "tutorial": ""
 }
