@@ -9,4 +9,7 @@ if(global.state == global.state_choose && in_hand){
 		global.selected = noone;	
 		target_y = room_width*3/4;
 	}
+	else{
+		target_y = room_width*3/4;	
+	}
 }

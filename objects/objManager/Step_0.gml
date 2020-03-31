@@ -150,6 +150,7 @@ switch(global.state){
 					global.hand[| ds_list_size(global.hand)-1].target_x = room_width - x*1.5;
 					global.hand[| ds_list_size(global.hand)-1].target_y = y - 2*ds_list_size(global.discard);
 					global.hand[| ds_list_size(global.hand)-1].depth = -ds_list_size(global.discard);
+					global.hand[| ds_list_size(global.hand)-1].in_hand = false;
 					ds_list_add(global.discard, global.hand[| ds_list_size(global.hand)-1]);
 					ds_list_delete(global.hand, ds_list_size(global.hand)-1);
 				}
@@ -188,15 +189,15 @@ switch(global.state){
 					randomize();
 					ds_list_shuffle(global.deck_reverse);
 				}
-				for(i = ds_list_size(global.deck_reverse)-1; i>0; i--){
-					audio_play_sound(snd_card, 10, false);
+				
+				audio_play_sound(snd_card, 10, false);
 					
-					var card = global.deck_reverse[| i];
-					card.target_y = y - 2*ds_list_size(global.deck);
-					card.depth = -ds_list_size(global.deck);
-					ds_list_add(global.deck, card);	
-					ds_list_delete(global.deck_reverse, ds_list_size(global.deck_reverse)-1);
-				}
+				var card = global.deck_reverse[| 0];
+				card.target_y = y - 2*ds_list_size(global.deck);
+				card.depth = -ds_list_size(global.deck);
+				ds_list_add(global.deck, card);	
+				ds_list_delete(global.deck_reverse, 0);
+				
 			}
 			
 			if(ds_list_size(global.deck) == global.numcards){
